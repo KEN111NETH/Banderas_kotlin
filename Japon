@@ -1,0 +1,38 @@
+package com.example.banderascompose
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            BanderaJapon()
+        }
+    }
+}
+
+@Composable
+fun BanderaJapon() {
+
+    Canvas(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
+
+        drawCircle(
+            color = Color(0xFFBC002D),
+            radius = size.minDimension * 0.25f,
+            center = center
+        )
+    }
+}
