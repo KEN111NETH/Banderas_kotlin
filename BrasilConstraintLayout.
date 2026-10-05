@@ -1,0 +1,66 @@
+package com.example.banderascompose
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            BanderaBrasilConstraint()
+        }
+    }
+}
+
+@Composable
+fun BanderaBrasilConstraint() {
+
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF009B3A))
+    ) {
+
+        val (rombo, circulo) = createRefs()
+
+        // Rombo amarillo
+        Box(
+            modifier = Modifier
+                .size(280.dp)
+                .rotate(45f)
+                .background(Color(0xFFFFCC29))
+                .constrainAs(rombo) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                }
+        )
+
+        // Círculo azul
+        Box(
+            modifier = Modifier
+                .size(150.dp)
+                .background(Color(0xFF002776))
+                .constrainAs(circulo) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                }
+        )
+    }
+}
