@@ -1,0 +1,78 @@
+package com.example.banderascompose
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            BanderaAlemaniaConstraint()
+        }
+    }
+}
+
+@Composable
+fun BanderaAlemaniaConstraint() {
+
+    ConstraintLayout(
+        modifier = Modifier.fillMaxSize()
+    ) {
+
+        val (negro, rojo, amarillo) = createRefs()
+
+        // Negro
+        Box(
+            modifier = Modifier
+                .background(Color.Black)
+                .constrainAs(negro) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    top.linkTo(parent.top)
+
+                    width = Dimension.fillToConstraints
+                    height = Dimension.percent(0.3333f)
+                }
+        )
+
+        // Rojo
+        Box(
+            modifier = Modifier
+                .background(Color(0xFFFF0000))
+                .constrainAs(rojo) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    top.linkTo(negro.bottom)
+
+                    width = Dimension.fillToConstraints
+                    height = Dimension.percent(0.3333f)
+                }
+        )
+
+        // Amarillo
+        Box(
+            modifier = Modifier
+                .background(Color(0xFFFFCC00))
+                .constrainAs(amarillo) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    top.linkTo(rojo.bottom)
+                    bottom.linkTo(parent.bottom)
+
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+                }
+        )
+    }
+}
