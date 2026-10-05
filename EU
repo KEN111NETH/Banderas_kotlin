@@ -1,0 +1,129 @@
+package com.example.banderascompose
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            BanderaEstadosUnidos()
+        }
+    }
+}
+
+@Composable
+fun BanderaEstadosUnidos() {
+
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+
+        // Parte superior con las franjas y el cuadro azul
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+        ) {
+
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .background(Color(0xFFB22234))
+                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .background(Color.White)
+                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .background(Color(0xFFB22234))
+                )
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .background(Color.White)
+                )
+            }
+
+            // Cuadro azul
+            Box(
+                modifier = Modifier
+                    .width(160.dp)
+                    .height(130.dp)
+                    .background(Color(0xFF3C3B6E))
+            )
+        }
+
+        // Parte inferior de las franjas
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f)
+        ) {
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .background(Color(0xFFB22234))
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .background(Color.White)
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .background(Color(0xFFB22234))
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .background(Color.White)
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .background(Color(0xFFB22234))
+            )
+        }
+    }
+}
