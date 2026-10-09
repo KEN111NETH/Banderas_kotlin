@@ -1,0 +1,80 @@
+
+package com.example.banderascompose
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            BanderaReinoUnido()
+        }
+    }
+}
+
+@Composable
+fun BanderaReinoUnido() {
+    val transparente = Color.Transparent
+    val azul = Color(0xFF012169)
+    val blanco = Color.White
+    val rojo = Color(0xFFC8102E)
+
+    val colores = listOf(
+        transparente, azul, blanco, rojo
+    )
+
+    // 0 = transparente
+    // 1 = azul
+    // 2 = blanco
+    // 3 = rojo
+
+    val mapa = listOf(
+        "1000003000001",
+        "2100003000012",
+        "2210003000122",
+        "2221003001222",
+        "2222103012222",
+        "2222213122222",
+        "3333333333333",
+        "1111123111111",
+        "3333333333333",
+        "2222213122222",
+        "2222103012222",
+        "2221003001222",
+        "2210003000122",
+        "2100003000012",
+        "1000003000001"
+    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF20212B)),
+        contentAlignment = Alignment.Center
+    ) {
+        Column {
+            mapa.forEach { fila ->
+                Row {
+                    fila.forEach { pixel ->
+                        Box(
+                            modifier = Modifier
+                                .size(24.dp)
+                                .background(
+                                    colores[pixel.digitToInt()]
+                                )
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
